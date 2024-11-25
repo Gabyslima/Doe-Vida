@@ -1,0 +1,1080 @@
+
+*css ::-webkit-search-results-decoration
+
+*{  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body{
+    margin:0;
+    padding: 0;
+    list-style: none;
+    background-color: #ffffffa1;
+}
+
+header{
+    width: 100%;
+    background-color: #ffffffa1;
+    display:flex;
+    justify-content:center;
+    padding:20px 0;
+}
+
+/* Ajusta o estilo da logo */
+.logo1 {
+    width: auto;
+    border-radius: 50%;
+    margin-right: 2px; /* Menor espaçamento entre logo e item "Início" */
+}
+
+.logo1 img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.container-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 2px; /* Menor margin-right para aproximar ainda mais a logo */
+}
+
+/* Ajustes no menu */
+.menu ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    width: 100%;
+}
+
+.menu li {
+    display: inline-block;
+}
+
+/* Estilo para a página ativa */
+.menu li.active a::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #ff3131;
+    transform: scaleX(1); /* Linha visível */
+}
+
+/* Linha vermelha só nos itens de menu (não nos botões) */
+.menu li:not(.menu-FaleConoscoButton):not(.menu-VoltarButton) a::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #ff3131;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+/* Quando passar o mouse em cima de um item de menu normal, a linha aparece */
+.menu li:not(.menu-FaleConoscoButton):not(.menu-VoltarButton) a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Garantir que a linha não aparece nos itens de botão como Fale Conosco e Voltar */
+.menu li.menu-FaleConoscoButton a::after,
+.menu li.menu-VoltarButton a::after {
+    display: none;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    align-items: center;
+    margin: auto 10px; /* Menor espaçamento no margin para aproximar */
+    flex-wrap: nowrap;
+}
+
+/* Ajustes no botão "Fale Conosco" */
+.menu-FaleConoscoButton {
+    display: inline-block;
+    padding: 0.2rem 0.8rem;
+    border: none;
+    background-color: #ff3131;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95rem; /* Fonte do botão um pouco menor */
+    font-weight: 600;
+    text-align: center;
+    margin-top: 0;
+}
+
+.menu-FaleConoscoButton a {
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+}
+
+.menu-FaleConoscoButton:hover {
+    background-color: #ff3131;
+}
+
+.menu ul li.menu-FaleConoscoButton {
+    font-size: 0.95rem; /* Fonte do botão um pouco menor */
+    padding: 5px 8px;
+}
+
+
+/* Ajustes no botão "Fale Conosco" */
+.menu-VoltarButton {
+    display: inline-block;
+    padding: 0.2rem 0.8rem;
+    border: none;
+    background-color: #ff3131;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95rem; /* Fonte do botão um pouco menor */
+    font-weight: 600;
+    text-align: center;
+    margin-top: 0;
+}
+
+.menu-VoltarButton a {
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+}
+
+.menu-VoltarButton:hover {
+    background-color: #ff3131;
+}
+
+.menu ul li.menu-VoltarButton {
+    font-size: 0.95rem; /* Fonte do botão um pouco menor */
+    padding: 5px 8px;
+}
+
+/* Aumenta o espaçamento entre os itens */
+.menu ul li {
+    margin-right: 12px; /* Aumenta o espaço entre os itens */
+}
+
+/* Estilo geral do menu */
+.menu ul li a {
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bolder;
+    color: #000;
+    font-family: 'inter', sans-serif;
+    padding: 5px 6px;
+    position: relative;
+}
+
+.carrossel {
+    margin: 0 auto;
+    width: 100%;
+    height: auto; /* Garante altura adaptativa */
+    overflow: visible; /* Certifica que o conteúdo visível (como as bolinhas) não seja cortado */
+    position: relative; /* Controla o posicionamento de elementos filhos */
+}
+
+.carrossel-content {
+    display: flex;
+    width: 300%; /* Três imagens = 300% */
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carrossel-content input {
+    display: none; /* Esconde os inputs de rádio */
+}
+
+.carrossel-imagem {
+    width: 33.33%; /* Cada imagem ocupa 1/3 da largura total */
+    height: 100%;
+}
+
+.carrossel-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav-manual {
+    position: absolute;
+    bottom: -30px; /* Move as bolinhas para baixo do carrossel */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+}
+
+.nav-manual .manual-btn {
+    border: 1px solid #ff3131;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin: 0 8px; /* Espaçamento entre as bolinhas */
+    width: 12px; /* Tamanho reduzido da bolinha */
+    height: 12px; /* Tamanho reduzido da bolinha */
+    background-color: transparent; /* Fundo padrão transparente */
+}
+
+.nav-manual .manual-btn:hover {
+    background-color: #ff3131;
+}
+
+#radio1:checked ~ .carrossel-content {
+    transform: translateX(0); /* Mostra a primeira imagem */
+}
+
+#radio2:checked ~ .carrossel-content {
+    transform: translateX(-33.33%); /* Mostra a segunda imagem */
+}
+
+#radio3:checked ~ .carrossel-content {
+    transform: translateX(-66.66%); /* Mostra a terceira imagem */
+}
+
+/* Estilo do botão ativo */
+#radio1:checked ~ .nav-manual .manual-btn:nth-child(1),
+#radio2:checked ~ .nav-manual .manual-btn:nth-child(2),
+#radio3:checked ~ .nav-manual .manual-btn:nth-child(3) {
+    background-color: #ff3131;
+}
+
+.index-h1, .doacoes-h1, .informacoes-h1, .curiosidades-h1, .sobre-nos-h1, .localizacao-h1 {
+    text-decoration:none;
+    color: #2c3e50;
+    justify-content:center;
+    padding: 0 5%;
+    font-size: clamp(1.rem, 4vw, 3rem);
+    text-align:center;
+    line-height: 1.2;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+}
+
+.index-h2, .doacoes-h2, .informacoes-h2, .curiosidades-h2, .sobre-nos-h2, .localizacao-h2 {
+    text-decoration:none;
+    color: #2c3e50;
+    justify-content:center;
+    padding: 0 5%;
+    font-size: clamp(1.rem, 4vw, 3rem);
+    text-align:center;
+    line-height: 1.2;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+}
+
+.index-h3, .doacoes-h3, .informacoes-h3, .curiosidades-h3, .sobre-nos-h3, .localizacao-h3 {
+    text-decoration:none;
+    color: #2c3e50;
+    justify-content:center;
+    padding: 0 5%;
+    font-size: clamp(1.rem, 4vw, 3rem);
+    text-align:center;
+    line-height: 1.2;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+}
+
+.doacoes a{
+    text-decoration:none;
+    color: #2980b9;
+    justify-content:center;
+    padding: 0 5%;
+    font-size: clamp(1.rem, 4vw, 3rem);
+    text-align:center;
+    line-height: 1.2;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+}
+
+.index-p, .doacoes-p, .informacoes-p, .curiosidades-p, .sobre-nos-p{
+    text-decoration:none;
+    color: #34495e; 
+    text-align: justify;
+    justify-content:center;
+    padding: 0 5%;
+    text-indent: 2px;
+    margin: 0 auto; 
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 1000px;
+    box-sizing: border-box;
+}
+
+.doacoes ul li, .localização ul li{
+    text-decoration:none;
+    color: #34495e; 
+    text-align: justify;
+    justify-content:center;
+    padding: 0 5%;
+    text-indent: 2px;
+    margin: 0 auto; 
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: 1000px;
+    box-sizing: border-box;
+}
+
+.img-doacoes {
+    display: block; /* Garante que a imagem ocupe uma linha sozinha */
+    margin: 0 auto; /* Centraliza a imagem horizontalmente */
+    max-width: 1000px; /* Limita a largura da imagem ao mesmo tamanho dos parágrafos */
+    width: 100%; /* Faz a imagem se ajustar proporcionalmente ao contêiner */
+    height: auto; /* Mantém a proporção original da imagem */
+    border-radius: 5px; /* Opcional: Bordas arredondadas */
+    box-sizing: border-box; /* Inclui padding e borda no tamanho total */
+}
+
+
+.img-curiosidades {
+    display: block; /* Garante que a imagem ocupe uma linha sozinha */
+    margin: 0 auto; /* Centraliza a imagem horizontalmente */
+    max-width: 1000px; /* Limita a largura da imagem ao mesmo tamanho dos parágrafos */
+    width: 100%; /* Faz a imagem se ajustar proporcionalmente ao contêiner */
+    height: auto; /* Mantém a proporção original da imagem */
+    border-radius: 5px; /* Opcional: Bordas arredondadas */
+    box-sizing: border-box; /* Inclui padding e borda no tamanho total */
+}
+
+
+.mapa-responsivo{
+    overflow: hidden;
+    text-align: center;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 800px;
+    padding-bottom: 50%;
+    position:relative;
+    height:0;
+}
+
+.mapa-responsivo iframe{
+    left:0;
+    top:0;
+    height: 100%;
+    width:100%;
+    position: absolute;
+    border: none;
+}
+
+*form{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.form-body{
+    width: 100%;
+    min-height: 100vh; /* Adapta-se ao conteúdo sem sobrepor outros elementos */
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8ebd7; 
+    padding: 20px; /* Adiciona um espaçamento extra ao redor */
+    box-sizing: border-box; /* Inclui o padding no cálculo do tamanho */
+    
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.form{
+    width: 50%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items:center;
+    flex-direction: column;
+    background-color:#ffffff;
+    padding: 3rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    border-radius: 1%;
+}
+
+.form-header{
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+
+.form-header h1{
+    color: #000;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+
+.form-header h1::after{
+    content: '';
+    display: block;
+    width: 5rem;
+    height: 0.3rem;
+    background-color: #ff3131;
+    margin: 0.5rem auto;
+    border-radius: 10px;
+    position:absolute; /* Alinha diretamente abaixo do título */
+
+}
+
+.form-descripcion{
+    font-family: 'inter', sans-serif;
+    font-size: 1rem;
+    color: #0000001c;
+    margin-top: 0.5rem;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+.input-group{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.input-box{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+    width: 100%;
+}
+
+.input-box select{
+    width: 100%; /* Ocupa toda a largura do container */
+    max-width: 100%; /* Limita para evitar expansões desnecessárias */
+    padding: 0.8rem 1.2rem;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px rgba(0,0,0, 0.1);
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #333;
+    cursor: pointer;
+    appearance: none;
+}
+
+.input-box select:focus{
+    outline: none;
+    border-color: #ff3131;
+    box-shadow: 0 0 5px rgba(255,049,049,00.7);
+}
+
+.input-box select:hover{
+    border-color: #ff3131;
+}
+
+.input-box input, .input-box textarea, .input-box select{
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+}
+
+.input-box input:hover, .input-box texarea:hover{
+    background-color: #eeeeee75;
+
+}
+
+.input-box input:focus-visible,
+.input-box textarea:focus-visible, .input-box select:focus-visible {
+    outline: 1px solid #ff3131;
+
+}
+
+.input-box label{
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #000000c0;
+}
+
+.input-box input::placeholder,
+.input-box textarea::placeholder, .input-box select::placeholder{
+    color: #000000be;
+}
+
+.gender-group{
+    display: block;
+    margin-top: 0.62rem;
+    padding: 0 0 .5rem;
+    text-align: center;
+}
+
+.gender-group label{
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000000c0;
+}
+.gender-input {
+    display: block;
+    align-items: center;
+    margin-bottom: 0.5rem;
+
+}
+
+.gender-input input{
+    margin-right: 0.35rem;
+
+}
+
+.gender-input label{
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #000000c0;
+}
+.continue-button {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    width: 100%; /* O container ocupa toda a largura */
+}
+
+.continue-button button {
+    width: 70%; /* Aumente ou diminua este valor para ajustar a largura */
+    max-width: 400px; /* Limite máximo, opcional */
+    margin: 0 auto; /* Centraliza o botão */
+    border: none;
+    background-color: #ff3131;
+    padding: 0.62rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 600;
+    text-align: center;
+    box-sizing: border-box; /* Garante que o padding não afete a largura */
+}
+
+.continue-button button:hover{
+    background-color: #ff3131;
+    
+}
+
+.gender-input input:checked{
+    background-color: #ff3131;
+}
+
+.continue-button button a{
+    text-decoration: none;
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: #ffffff;
+    text-align: center;
+}
+
+footer{
+    width: 100%;
+    background-color: #ff3131;
+    display:flex;
+    justify-content:center;
+    padding:40px 0; 
+}
+
+.container-rodape ul{
+list-style: none;
+display: flex;
+text-decoration: none;
+}
+
+.container-rodape li{
+    display: inline-block;
+}
+
+.container-rodape{
+    display: flex;
+    text-decoration: none;
+    margin: auto 15px;
+    justify-content:space-between;
+}
+
+
+.container-rodape a{
+    font-size: 20px;    
+    font-weight: bolder;
+    color: #ffffff;
+}
+
+@media screen and(max-width:768px){
+    body{
+        margin:0;
+        padding: 0;
+        list-style: none;
+        background-color: #ffffffa1;
+    }
+    
+    header{
+        padding:10px 0;
+    }
+    
+    .Carrossel{
+        width: 150%;
+        overflow: hidden;
+    }
+    
+    .Carrossel-imagens{
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+    
+    }
+    
+    .Carrossel-imagens img{
+        width: 100%;
+    }
+    
+    .logo1 img{
+        width: 35px;
+        height: 35px;
+    }
+    
+    .container-logo{
+        margin-right: -5px;
+        
+    }
+    
+    .menu ul{
+        flex-direction: column;
+        align-items: center;
+        gap: 0px;
+    }
+    
+    .menu{
+        flex-direction: column;
+        margin: 0 auto;
+    
+    }
+    
+    .menu-PefilButton{
+        margin-left: 20px;
+    }   
+    
+    .menu-PefilButton img{
+        position: absolute;
+        width: 250%;
+        height: 300%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        
+    }
+    
+    .menu ul li{
+        margin-right: -3px;
+    }
+    .menu ul li a{
+        font-size: 14px;
+        padding: 4px 6px;
+        flex-wrap: nowrap;
+    
+    } 
+    
+    .carrossel{
+        margin: 0 auto;
+        width: 100%;
+        height: auto;
+        padding: 0;
+        overflow: hidden;
+    }
+    
+    .carrossel-content{
+        width: 400%;
+        height: auto;
+        display: flex;
+    
+    }
+    
+    .carrossel-content input{
+        display:none;
+    }
+    
+    .carrossel-imagem{
+        width: 100%;
+        height: auto;
+        position: relative;
+        text-align: center;
+        transition: 5s;
+    }
+    
+    .carrossel-imagem img{
+        width: 100%;
+    }
+    
+    .nav-manual, .nav-auto{
+        position: absolute;
+        width: 100%;
+        margin-top: 33%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .nav-manual .manual-btn{
+        border: 1px solid #ff3131;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.2s;
+    
+    }
+    
+    .nav-manual .manual-btn:not(:last-child), .nav-auto div:not(:last-child){
+        margin-right: 10px;
+    }
+    
+    .nav-manual .manual-btn:hover{
+        background-color: #ff3131;
+    }
+    
+    #radio1:checked ~ .nav-auto .auto-btn1, #radio2:checked ~ .nav-auto .auto-btn2, #radio3:checked ~ .nav-auto .auto-btn3{
+        background-color: #ff3131;
+    }
+    
+    #radio1:checked ~ .Carrossel-imagem1{
+        margin-left: 0%;
+    }
+    
+    #radio2:checked ~ .Carrossel-imagem{
+        margin-left: -25%;
+    }
+    
+    #radio3:checked ~ .Carrossel-imagem{
+        margin-left: -50%;
+    }
+    
+    
+    .index-h1 {
+    font-size: 2rem;
+        
+    }
+    
+    .img01-index{
+        flex-wrap: wrap;
+        justify-content: center;
+    
+    }
+    
+    .img01-index img{
+        width: 250px;
+    }
+
+    .img01-index .text-container{
+        text-align: center;
+    }
+    
+    .index-p {
+        font-size: 15px;
+        line-height: 1.5;
+        padding: 0 5%; 
+        max-width: 800%;  
+    }
+    
+    .local-descrito{
+        color: #000000be;
+    }
+    
+    .mapa-responsivo{
+        overflow: hidden;
+        padding-bottom: 50%;
+        position:relative;
+        height:0;
+    }
+    
+    .mapa-responsivo iframe{
+        left:0;
+        top:0;
+        height: 65%;
+        width:50%;
+        position: absolute;
+    
+    }
+    
+    .container{
+        width: 100%;
+    }
+    
+    
+    .form{
+        width: 70%;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    
+    .input-box select{
+        font-size: 0.9rem;
+    }
+    
+    footer{
+        width: 100%;
+        background-color: #ff3131;
+        display:flex;
+        justify-content:center;
+        padding:40px 0; 
+    }
+    
+    .container-rodape ul{
+    list-style: none;
+    display: flex;
+    text-decoration: none;
+    }
+    
+    .container-rodape li{
+        display: inline-block;
+    }
+    
+    .container-rodape{
+        display: flex;
+        text-decoration: none;
+        margin: auto 15px;
+        justify-content:space-between;
+    }
+    
+    
+    .container-rodape a{
+        font-size: 20px;    
+        font-weight: bolder;
+        color: #ffffff;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    body{
+        margin:0;
+        padding: 0;
+        list-style: none;
+        background-color: #ffffffa1;
+    }
+    
+    .carrossel{
+        width: 150%;
+        overflow: hidden;
+    }
+    
+    .carrossel-imagens{
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+    
+    }
+    
+    .carrossel-imagens img{
+        width: 100%;
+    }
+    
+    .logo1 img{
+        width: 30px;
+        height: 30px;
+    }
+    
+    .container-logo{
+        margin-right: -2px;
+        
+        }
+    
+    
+    .menu-PefilButton{
+    margin-left:15px;
+    }   
+    
+    .menu-PefilButton img{
+        position: absolute;
+        width: 250%;
+        height: 300%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        
+    }
+    
+    .menu ul li a{
+        font-size: 12px;   
+        padding: 3px 5px;
+    } 
+    
+    .carrossel{
+        margin: 0 auto;
+        width: 100%;
+        height: auto;
+        padding: 0;
+        overflow: hidden;
+    }
+    
+    .carrossel-content{
+        width: 400%;
+        height: auto;
+        display: flex;
+    
+    }
+    
+    .carrossel-content input{
+        display:none;
+    }
+    
+    .carrossel-imagem{
+        width: 100%;
+        height: auto;
+        position: relative;
+        text-align: center;
+        transition: 5s;
+    }
+    
+    .carrossel-imagem img{
+        width: 100%;
+    }
+    
+    .nav-manual, .nav-auto{
+        position: absolute;
+        width: 100%;
+        margin-top: 33%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .nav-manual .manual-btn{
+        border: 1px solid #ff3131;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.2s;
+    
+    }
+    
+    .nav-manual .manual-btn:not(:last-child), .nav-auto div:not(:last-child){
+        margin-right: 10px;
+    }
+    
+    .nav-manual .manual-btn:hover{
+        background-color: #ff3131;
+    }
+    
+    #radio1:checked ~ .nav-auto .auto-btn1, #radio2:checked ~ .nav-auto .auto-btn2, #radio3:checked ~ .nav-auto .auto-btn3{
+        background-color: #ff3131;
+    }
+    
+    #radio1:checked ~ .Carrossel-imagem1{
+        margin-left: 0%;
+    }
+    
+    #radio2:checked ~ .Carrossel-imagem{
+        margin-left: -25%;
+    }
+    
+    #radio3:checked ~ .Carrossel-imagem{
+        margin-left: -50%;
+    }
+    
+    
+    .index-h1 {
+    font-size: 1.5rem;
+    padding: 0 2%;
+    }
+    
+    .img01-index{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .img01-index img{
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .img01-index .text-container{
+        text-align: center;
+    }
+
+    .index-p {
+        padding: 0 2%;
+        font-size: 14px;
+        line-height: 1.4;
+        width: 100%;
+    }
+    
+    .local-descrito{
+        color: #000000be;
+    }
+    
+    .mapa-responsivo{
+        overflow: hidden;
+        padding-bottom: 50%;
+        position:relative;
+        height:0;
+    }
+    
+    .mapa-responsivo iframe{
+        left:0;
+        top:0;
+        height: 65%;
+        width:50%;
+        position: absolute;
+    
+    }
+    
+    
+    .container{
+        width: 100%;
+    }
+    
+    
+    .form{
+        width: 85%;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+    
+    
+    footer{
+        width: 100%;
+        background-color: #ff3131;
+        display:flex;
+        justify-content:center;
+        padding:40px 0; 
+    }
+    
+    .container-rodape ul{
+    list-style: none;
+    display: flex;
+    text-decoration: none;
+    }
+    
+    .container-rodape li{
+        display: inline-block;
+    }
+    
+    .container-rodape{
+        display: flex;
+        text-decoration: none;
+        margin: auto 15px;
+        justify-content:space-between;
+    }
+    
+    
+    .container-rodape a{
+        font-size: 20px;    
+        font-weight: bolder;
+        color: #ffffff;
+    }
+
+}
